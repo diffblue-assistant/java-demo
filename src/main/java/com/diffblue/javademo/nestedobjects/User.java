@@ -4,6 +4,7 @@ package com.diffblue.javademo.nestedobjects;
 
 import com.diffblue.javademo.nestedobjects.subpackage.Item;
 import com.diffblue.javademo.nestedobjects.subpackage.Order;
+import java.util.Objects;
 
 public class User {
   public User(Order order)  {
@@ -14,7 +15,8 @@ public class User {
    * Checks if an item costs the same as the user's order item.
    */
   public boolean checkItemCost(Item item) {
-    if (!order.hasItem()) {
+        Objects.requireNonNull(item);
+        if (!order.hasItem()) {
       return false;
     }
     return order.item.cost == item.cost;

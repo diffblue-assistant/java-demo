@@ -4,6 +4,7 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.MongoCollection;
 import com.mongodb.client.MongoDatabase;
 import org.bson.Document;
+import java.util.Objects;
 
 public class DatabaseDao {
 
@@ -46,7 +47,9 @@ public class DatabaseDao {
    * @return contents of the last row
    */
   public int getCountFromDb(String collectionName, Document searchFor) {
-    MongoCollection<Document> collection = mongoDatabase.getCollection(collectionName);
+        Objects.requireNonNull(collectionName);
+        Objects.requireNonNull(searchFor);
+        MongoCollection<Document> collection = mongoDatabase.getCollection(collectionName);
     return (int) collection.count(searchFor);
   }
 }

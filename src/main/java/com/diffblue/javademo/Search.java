@@ -1,6 +1,7 @@
 package com.diffblue.javademo;
 
 import org.apache.commons.codec.digest.DigestUtils;
+import java.util.Objects;
 
 // Copyright 2016-2017 DiffBlue limited. All rights reserved.
 
@@ -9,7 +10,8 @@ public class Search {
    * Checks if an integer is contained within an array.
    */
   public boolean contains(int [] array, int target) {
-    boolean found = false;
+        Objects.requireNonNull(array);
+        boolean found = false;
 
     for (int count = 0; count < array.length; ++count) {
       if (array[count] == target) {
